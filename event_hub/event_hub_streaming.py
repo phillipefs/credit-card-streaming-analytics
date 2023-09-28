@@ -2,22 +2,12 @@ from azure.eventhub import EventHubProducerClient, EventData
 from azure.eventhub.exceptions import EventHubError
 from faker import Faker
 import random
-from dotenv import load_dotenv
-import os
-
-# Load Variables
-load_dotenv()
-CNN_STRING      = os.getenv("CONN_STRING")
-NAME_EVENTHUB   = os.getenv("NAME_EVENTHUB")
-BATCH_QUANTITY  = os.getenv("BATCH_QUANTITY")
-BATCH_SIZE      = os.getenv("BATCH_SIZE")
 
 
 class EventHubStreaming:
     def __init__(self, cnn_string, event_hub_name) -> None:
         self.cnn_string = cnn_string
         self.event_hub_name = event_hub_name
-
 
     def generate_transactions_cc(self, transactions_quantity:int) -> list:
         """
@@ -66,11 +56,4 @@ class EventHubStreaming:
 
         with producer:
             producer.send_batch(event_data_list)
-
-
-if __name__ == '__main__':
-
-    for _ in range(BATCH_QUANTITY):
-        event_hub_streaming = EventHubStreaming(CNN_STRING, NAME_EVENTHUB)
-        event_hub_streaming.insert_batch_events(BATCH_SIZE)
 
