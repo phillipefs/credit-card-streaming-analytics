@@ -12,10 +12,11 @@
 # MAGIC
 # MAGIC CREATE DATABASE IF NOT EXISTS analytics_bronze LOCATION "/mnt/layer-bronze/databricks";
 # MAGIC CREATE DATABASE IF NOT EXISTS analytics_silver LOCATION "/mnt/layer-silver/databricks";
-# MAGIC CREATE DATABASE IF NOT EXISTS analytics_gold LOCATION "/mnt/layer-gold/databricks";
+# MAGIC CREATE DATABASE IF NOT EXISTS analytics_gold   LOCATION "/mnt/layer-gold/databricks";
 
 # COMMAND ----------
 
+# DBTITLE 1,Create Delta Table Raw
 # MAGIC %sql
 # MAGIC create table analytics_bronze.teste ( id int) location "/mnt/layer-bronze/databricks/teste";
 
@@ -28,3 +29,8 @@
 
 # MAGIC %sql
 # MAGIC show databases
+
+# COMMAND ----------
+
+# MAGIC %sql 
+# MAGIC select count(*) from analytics_bronze.transactions_credit_card
