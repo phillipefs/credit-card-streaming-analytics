@@ -21,7 +21,7 @@
    ```
    pip install -r requirements.txt
    ```
-4. Run app_events`
+4. Run app_events
    ```
    python .\app_events.py
    ```
