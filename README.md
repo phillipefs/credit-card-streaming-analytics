@@ -17,7 +17,7 @@
    CNN_STRING_EVENTHUB='Endpoint=sb:xxx'
    NAME_EVENTHUB="xxxxxxxxxxxxxxxxxxx"
    ```
-3. Install requirements file`
+3. Install requirements file
    ```
    pip install -r requirements.txt
    ```
