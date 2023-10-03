@@ -14,23 +14,23 @@ import json
 
 connectionString = dbutils.secrets.get(scope="kv-databricks", key="endpoint-eventhub")
 
-# Start from beginning of stream
-startOffset = "-1"
+# # Start from beginning of stream
+# startOffset = "-1"
 
-# Create the positions
-startingEventPosition = {
-  "offset": startOffset,  
-  "seqNo": -1,            #not in use
-  "enqueuedTime": None,   #not in use
-  "isInclusive": True
-}
+# # Create the positions
+# startingEventPosition = {
+#   "offset": startOffset,  
+#   "seqNo": -1,            #not in use
+#   "enqueuedTime": None,   #not in use
+#   "isInclusive": True
+# }
 
 event_hub_configs = {
     "eventhubs.connectionString":sc._jvm.org.apache.spark.eventhubs.EventHubsUtils.encrypt(connectionString),
     "eventhubs.consumerGroup":"$Default"
 }
 
-event_hub_configs["eventhubs.startingPosition"] = json.dumps(startingEventPosition)
+# event_hub_configs["eventhubs.startingPosition"] = json.dumps(startingEventPosition)
 
 df_events_cc = spark.readStream.format("eventhubs").options(**event_hub_configs).load()
 
@@ -61,15 +61,12 @@ df_events_cc = (
         F.col("body.credit_card_provider").alias("credit_card_provider"),
         F.col("body.credit_card_expiration").alias("credit_card_expiration"),
         F.col("body.purchase_amount").alias("purchase_amount"), 
-        (F.col("enqueuedTime") - F.expr("INTERVAL 3 HOURS")).alias("event_timestamp")
+        (F.col("enqueuedTime") - F.expr("INTERVAL 3 HOURS")).cast("string").alias("event_timestamp")
 
     )
 )
-display(df_events_cc)
 
-
-
-# df_events_cc.writeStream.format("delta")\
-#   .option("checkpointLocation", "/mnt/landing/checkpoint_events_cc")\
-#   .option("outputMode", "append")\
-#   .toTable("analytics_bronze.transactions_credit_card")
+df_events_cc.writeStream.format("delta")\
+  .option("checkpointLocation", "/mnt/landing/checkpoint_events_cc")\
+  .option("outputMode", "append")\
+  .toTable("analytics_bronze.cc_transactions")
