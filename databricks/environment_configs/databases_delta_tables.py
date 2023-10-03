@@ -32,3 +32,24 @@
 # MAGIC )
 # MAGIC USING DELTA
 # MAGIC LOCATION "/mnt/layer-bronze/databricks/analytics_bronze/cc_transactions";
+
+# COMMAND ----------
+
+# DBTITLE 1,Create Delta Table Silver
+# MAGIC %sql
+# MAGIC create table analytics_silver.cc_transactions(
+# MAGIC   id_transaction bigint generated always as identity(start with 1 increment by 1),
+# MAGIC   transaction_hash string,
+# MAGIC   username STRING,
+# MAGIC   name STRING,
+# MAGIC   email STRING,
+# MAGIC   city STRING,
+# MAGIC   country STRING,
+# MAGIC   credit_card_number STRING,
+# MAGIC   credit_card_provider STRING,
+# MAGIC   credit_card_expiration STRING,
+# MAGIC   purchase_amount FLOAT,
+# MAGIC   event_timestamp TIMESTAMP
+# MAGIC )
+# MAGIC USING DELTA
+# MAGIC LOCATION "/mnt/layer-silver/databricks/analytics_silver/cc_transactions";
