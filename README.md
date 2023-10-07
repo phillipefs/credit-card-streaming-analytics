@@ -4,7 +4,7 @@
   <img src="images/architecture_image.png" height="300" width="1600">
 </div>
 
-### Prerequisites - Start Events
+### Start Events - Prerequisites
 1. Clone the repo
    ```
    git clone https://github.com/phillipefs/credit-card-streaming-analytics.git
@@ -25,3 +25,17 @@
    ```
    python .\app_events.py
    ```
+
+### Databricks - Prerequisites 
+1. Create cluster and install lib azure-eventhub. 
+   ```
+   com.microsoft.azure:azure-eventhubs-spark_2.12:2.3.22
+   ```
+
+### Databricks - Workflow Streaming
+xxxxxxxxxxxxxxxxxxxx
+
+
+### Dashboard Streaming Analytics - Update Every Minute
+
+xxxxxxxxxxxxxxx
