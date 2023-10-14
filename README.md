@@ -34,12 +34,12 @@
 
 ### Databricks - Workflow Streaming
 <div aling="center">
-  <img src="images/workflow_databricks.png" height="500" width="1800">
+  <img src="images/workflow_databricks.png" height="500" width="2500">
 </div>
 
 
 ### Dashboard Streaming Analytics - Update Every Minute
 
 <div aling="center">
-  <img src="images/dashboard.PNG" height="600" width="2500">
+  <img src="images/dashboard.PNG" height="500" width="2500">
 </div>
