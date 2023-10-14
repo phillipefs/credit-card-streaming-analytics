@@ -41,5 +41,5 @@
 ### Dashboard Streaming Analytics - Update Every Minute
 
 <div aling="center">
-  <img src="images/dashboard.PNG" height="600" width="1800">
+  <img src="images/dashboard.PNG" height="600" width="2500">
 </div>
