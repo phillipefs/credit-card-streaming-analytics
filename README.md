@@ -33,9 +33,13 @@
    ```
 
 ### Databricks - Workflow Streaming
-xxxxxxxxxxxxxxxxxxxx
+<div aling="center">
+  <img src="images/workflow_databricks.png" height="500" width="1800">
+</div>
 
 
 ### Dashboard Streaming Analytics - Update Every Minute
 
-xxxxxxxxxxxxxxx
+<div aling="center">
+  <img src="images/dashboard.PNG" height="600" width="1800">
+</div>
